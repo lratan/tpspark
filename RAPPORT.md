@@ -24,5 +24,34 @@ Toutes les valeurs des champs sont notées sous forme d'entiers, un second fichi
 A noter que si la taille du fichier n'est pas suffisante, il suffit de prendre un autre mois en plus (Il ne s'agit ici que des prestations de décembre).
 
 ## Programme
+
+Le programme compte le nombre d'accidents de travail sur le mois du fichier pris en entrée.
+Il lit d'abord le fichier CSV passé en argument du programme, divise les lignes sur le symbole ';' via une opération map. Ensuite il fitre le dataset créé sur le 32ème champs correspondant aux accidents de travail.
+Il fini par compter le nombre de ligne et écrit le résultat dans le un fichier CSV sur le HDFS.
+
 ## Mise en place du cluster
+
+* Création des machines virtuelles sur OpenStack
+* Création des utilisateurs hadoop sur toutes les machines et répartition des clefs SSH.
+* Mise à jour des fichiers host
+* Téléchargement des binaires, mise en place des variables d'environement.
+* Configuration des modules HDFS, HADOOP et Yarn.
+* Définition des workers (RAM disponible et nombre de coeurs)
+* On réplique le binaire et la config sur chaque workers
+* On lance les commandes de formatage du HDFS sur le master.
+* On lance les commandes de démarrage du cluster, on a maintenant accès au interfaces web
+* Nous avons en plus défini des targets systemd pour démarrer avec la machine.
+* Il est alors possible de soumettre des JAR via l'interface CLI de spark.
+
 ## Utilisation
+
+Les commandes pour le lancer sont:
+
+```bash
+  # Compilation du module
+	sbt package
+  # En local
+	spark-submit --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar $PATH_TO_FILE/A201712_partial.csv --master local[4]
+  # Sur le cluster
+ 	spark-submit --deploy-mode cluster --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar hdfs://spark-1:9000/$PATH_TO_FILE/A201712.csv hdfs://spark-1:9000/$PATH_TO_FILE/outfile
+```
