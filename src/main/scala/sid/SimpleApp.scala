@@ -16,7 +16,7 @@ object SimpleApp {
                   .filter(stringArray => stringArray(32) != "0")
                   .count()
     val df = Seq(Message(subsetAmount.toString)).toDF().coalesce(1)
-    df.write.mode(SaveMode.Write).csv(outFile)
+    df.write.mode(SaveMode.OverWrite).csv(outFile)
     spark.stop();
   }
 }
