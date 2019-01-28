@@ -48,10 +48,10 @@ Il fini par compter le nombre de ligne et écrit le résultat dans le un fichier
 Les commandes pour le lancer sont:
 
 ```bash
-  # Compilation du module
-	sbt package
-  # En local
-	spark-submit --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar $PATH_TO_FILE/A201712_partial.csv --master local[4]
-  # Sur le cluster
- 	spark-submit --deploy-mode cluster --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar hdfs://spark-1:9000/$PATH_TO_FILE/A201712.csv hdfs://spark-1:9000/$PATH_TO_FILE/outfile
+# Compilation du module
+sbt package
+# En local
+spark-submit --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar $PATH_TO_FILE/A201712_partial.csv --master local[4]
+# Sur le cluster
+spark-submit --deploy-mode cluster --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar hdfs://spark-1:9000/$PATH_TO_FILE/A201712.csv hdfs://spark-1:9000/$PATH_TO_FILE/outfile
 ```
