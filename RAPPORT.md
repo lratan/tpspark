@@ -55,3 +55,8 @@ spark-submit --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar $PATH_TO_FILE/A20
 # Sur le cluster
 spark-submit --deploy-mode cluster --class "SimpleApp" $PATH_TO_JAR/tp1_2.11-1.0.jar hdfs://spark-1:9000/$PATH_TO_FILE/A201712.csv hdfs://spark-1:9000/$PATH_TO_FILE/outfile
 ```
+
+## Liens
+
+https://www.linode.com/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/
+https://www.linode.com/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/
